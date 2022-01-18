@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Book from '../components/Book.vue'
 import User from '../components/User.vue'
 import Admin from '../components/Admin.vue'
+import UserManage from '../components/UserManage.vue'
+import UserReport from '../components/UserReport.vue'
 const routes = [
 
   {
@@ -25,7 +27,12 @@ const routes = [
       {
         path: 'user',
         name: 'user',
-        component: User
+        component: User,
+        redirect: '/home/user/userManage',
+        children: [
+          { path: 'userManage', name: 'userManage', component: UserManage },
+          { path: 'userReport', name: 'userReport', component: UserReport }
+        ]
       },
       {
         path: 'admin',
