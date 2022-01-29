@@ -25,7 +25,7 @@ const routes = [
         path: 'book',
         name: 'Book',
         component: Book,
-
+        redirect: '/home/book/bookManage',
         children: [
           { path: 'bookManage', name: 'bookManage', component: BookManage },
           { path: 'bookDetail', name: 'bookDetail', component: BookDetail }

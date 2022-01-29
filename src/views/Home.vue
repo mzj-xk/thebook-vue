@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <div class="layout">
+  <div>
   </div>
   <router-view />
 </template>
@@ -24,7 +24,4 @@ export default {
 </script>
 
 <style scoped>
-.layout {
-  display: flex;
-}
 </style>

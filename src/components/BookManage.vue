@@ -19,8 +19,7 @@
       </div>
       <div class="table">
         <el-table :data="tableData"
-                  stripe
-                  style="">
+                  stripe>
           <el-table-column prop="name"
                            label="书名" />
           <el-table-column prop="author"
@@ -118,8 +117,10 @@ export default {
           pageNum: 1,
         }
       }).then(res => {
-        tableData.value = res.data.records
-        total.value = res.data.total
+        if (res.code == "1") {
+          tableData.value = res.data.records
+          total.value = res.data.total
+        }
       })
     }
     // 打开页面是自动获取数据
@@ -155,6 +156,7 @@ export default {
       dialogVisible.value = true
     }
     const add = () => {
+      console.log(tableData.value);
       request.post('/api/book/add', form).then(res => {
         if (res.code == "1") {
           ElMessage({
@@ -168,7 +170,6 @@ export default {
             message: '添加书籍失败',
           })
         }
-        form.value = {}
       })
       // 关闭弹窗
       dialogVisible.value = false
